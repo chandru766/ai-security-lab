@@ -1,0 +1,15 @@
+flowchart TD
+    A[User] --> B[Login]
+    B --> C{Dashboard}
+    
+    C -->|Selects Lab| D[Lab Detail]
+    D --> E[Read Objective]
+    E --> F[Send Attack Payload]
+    F --> G[Lab Engine]
+    G --> H[Mock Target Evaluation]
+    H --> I{Vulnerability Detected?}
+    I -->|Yes| J[Capture Evidence]
+    I -->|No| K[Return Standard Response]
+    J --> L[Update Progress]
+    J --> M[Log Security Event]
+    L --> N[Generate Final Report]\n

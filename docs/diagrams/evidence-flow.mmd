@@ -1,0 +1,7 @@
+flowchart TD
+    A[Lab Attack Submitted] --> B[Mock LLM Evaluation]
+    B --> C{Is Vulnerable?}
+    C -->|Yes| D[Extract Flag / Evidence String]
+    D --> E[Save LabAttempt]
+    E --> F[Log SecurityEvent]
+    F --> G[Generate Live Report]\n

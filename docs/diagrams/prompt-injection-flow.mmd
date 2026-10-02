@@ -1,0 +1,6 @@
+flowchart TD
+    A[User Input] --> B[System Prompt Wrapper]
+    B --> C[LLM Evaluation]
+    C --> D{Instruction Override Detected?}
+    D -->|Yes| E[Unexpected Action Executed]
+    D -->|No| F[Normal Response]\n

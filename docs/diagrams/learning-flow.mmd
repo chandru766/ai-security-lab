@@ -1,0 +1,8 @@
+flowchart TD
+    A[Start Module] --> B[Read Lessons]
+    B --> C[Mark Lessons Complete]
+    C --> D[Take Module Quiz]
+    D --> E{Pass >= 70%?}
+    E -->|Yes| F[Module Completed]
+    E -->|No| G[Retry Quiz]
+    F --> H[Unlock Related Labs]\n

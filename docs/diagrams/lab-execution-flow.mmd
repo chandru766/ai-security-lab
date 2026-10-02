@@ -1,0 +1,10 @@
+flowchart TD
+    A[User Input Payload] --> B[Lab Engine]
+    B --> C{Check System Mode}
+    C -->|Secure| D[Target - Apply Mitigations]
+    C -->|Vulnerable| E[Target - Unfiltered Evaluation]
+    
+    D --> F[Blocked/Ineffective]
+    E --> G{Contains Attack Pattern?}
+    G -->|Yes| H[Vulnerable Output & Evidence]
+    G -->|No| I[Standard Safe Output]\n

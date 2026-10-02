@@ -1,0 +1,5 @@
+flowchart TD
+    A[User Request] --> B[API Layer]
+    B --> C{RBAC Check}
+    C -->|Authorized| D[Proceed]
+    C -->|Unauthorized| E[403 Forbidden]\n

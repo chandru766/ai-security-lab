@@ -1,0 +1,6 @@
+flowchart TD
+    A[User Prompt] --> B[AI Agent]
+    B --> C{Permission Check?}
+    C -->|Missing / Flawed| D[Execute Highly Privileged Tool]
+    C -->|Proper| E[Access Denied]
+    D --> F[Data Exfiltration / Modification]\n

@@ -1,0 +1,6 @@
+flowchart TD
+    A[Request Report] --> B[Fetch SecurityEvents]
+    B --> C{Filter Vulnerable}
+    C --> D[Aggregate Findings]
+    D --> E[Format Summary]
+    E --> F[Return Report Data]\n

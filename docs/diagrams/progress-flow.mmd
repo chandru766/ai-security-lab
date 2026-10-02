@@ -1,0 +1,7 @@
+flowchart TD
+    A[User Action] --> B{Action Type}
+    B -->|Submit Quiz| C[Update ModuleProgress]
+    B -->|Exploit Vulnerability| D[Update LabProgress]
+    C --> E[Global Progress Engine]
+    D --> E
+    E --> F[Dashboard Statistics Updated]\n

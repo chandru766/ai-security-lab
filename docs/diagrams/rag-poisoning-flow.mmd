@@ -1,0 +1,7 @@
+flowchart TD
+    A[Malicious Document] --> B[(Knowledge Base)]
+    C[User Query] --> D[Retriever]
+    D --> B
+    D --> E[Retrieve Poisoned Context]
+    E --> F[LLM Generation]
+    F --> G[Manipulated Output Provided to User]\n

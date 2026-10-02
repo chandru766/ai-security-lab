@@ -1,0 +1,8 @@
+flowchart TD
+    A[User Prompt] --> B[AI Agent]
+    B --> C{Tool Selection}
+    C --> D[API Tool]
+    C --> E[DB Tool]
+    D --> F[Execution]
+    E --> F
+    F --> G[Response Generation]\n

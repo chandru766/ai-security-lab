@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Security Lab | Professional Training Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- LOGIN SCREEN -->
+    <div id="login-container">
+        <div class="login-card">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:1rem;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <h2>AI SECURITY LAB</h2>
+            <p>Hands-On AI Red Teaming & LLM Security Training</p>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Access Platform</button>
+            </form>
+            <div id="login-error" class="hidden text-red" style="margin-top:1rem; font-size:0.9rem;"></div>
+            <div class="credentials-hint">
+                <p>Demo credentials:</p>
+                <p><code>admin</code> / <code>admin</code> (tenantA)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div id="dashboard-container" class="hidden">
+        
+        <!-- GLOBAL NAVIGATION -->
+        <nav class="top-nav">
+            <div class="brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                AI SECURITY LAB
+            </div>
+            <div class="nav-links">
+                <a href="#/home" id="nav-home" class="active">HOME</a>
+                <a href="#/labs" id="nav-labs">LABS</a>
+                <a href="#/learning" id="nav-learning">LEARNING</a>
+                <a href="#/events" id="nav-events">EVENTS</a>
+                <a href="#/progress" id="nav-progress">PROGRESS</a>
+                <a href="#/reports" id="nav-reports">REPORTS</a>
+            </div>
+            <div class="user-info">
+                <div class="mode-toggle">
+                    <span style="color:var(--text-muted); font-weight:600; font-size:0.75rem; text-transform:uppercase;">MODE:</span>
+                    <span id="mode-label" style="font-weight:700; margin-right:0.5rem;" class="text-green">SECURE</span>
+                    <label class="switch">
+                        <input type="checkbox" id="security-mode-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div>
+                    <span class="text-muted">ID:</span> <b id="current-user" class="text-cyan"></b>
+                </div>
+                <button id="logout-btn" class="btn-secondary btn-small" style="padding: 0.4rem 1rem;">LOGOUT</button>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            
+            <!-- SECTION: HOME -->
+            <div id="section-home" class="section">
+                <!-- HERO -->
+                <div class="hero">
+                    <div style="max-width: 600px; z-index: 1;">
+                        <div class="hero-subtitle">PRACTICE • ATTACK • DEFEND • LEARN</div>
+                        <h1>Enterprise AI Security Training</h1>
+                        <p class="text-muted mb-4" style="font-size: 1.1rem;">A comprehensive penetration testing and educational environment for identifying vulnerabilities in AI, LLMs, RAG, and Agentic systems.</p>
+                        <button class="btn-primary" onclick="window.location.hash='#/labs'">BROWSE LABS</button>
+                        <button class="btn-secondary" onclick="window.location.hash='#/learning'" style="margin-left: 1rem;">ACADEMY</button>
+                    </div>
+                    <div style="z-index: 1; opacity: 0.7;">
+                        <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="var(--primary-cyan)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- FEATURE STRIP -->
+                <div style="display:flex; justify-content:space-between; margin-bottom:3rem; padding:1rem; border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); background:rgba(0,0,0,0.2);">
+                    <div style="display:flex; align-items:center; gap:1rem;"><span class="text-cyan" style="font-size:1.5rem;">❖</span> <div><b>15 LABS</b><br><span style="font-size:0.8rem; color:var(--text-muted);">Hands-on scenarios</span></div></div>
+                    <div style="display:flex; align-items:center; gap:1rem;"><span class="text-cyan" style="font-size:1.5rem;">❖</span> <div><b>15 MODULES</b><br><span style="font-size:0.8rem; color:var(--text-muted);">Structured curriculum</span></div></div>
+                    <div style="display:flex; align-items:center; gap:1rem;"><span class="text-cyan" style="font-size:1.5rem;">❖</span> <div><b>TRACK PROGRESS</b><br><span style="font-size:0.8rem; color:var(--text-muted);">Monitor skills</span></div></div>
+                    <div style="display:flex; align-items:center; gap:1rem;"><span class="text-cyan" style="font-size:1.5rem;">❖</span> <div><b>OWASP & MITRE</b><br><span style="font-size:0.8rem; color:var(--text-muted);">Industry aligned</span></div></div>
+                </div>
+
+                <!-- TOP ROW: STATS & STATUS -->
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    
+                    <!-- Real Statistics -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="card">
+                            <div class="stat-label">Total Labs</div>
+                            <div class="stat-value text-cyan" id="stat-total-labs">--</div>
+                        </div>
+                        <div class="card">
+                            <div class="stat-label">Learning Modules</div>
+                            <div class="stat-value text-cyan" id="stat-total-modules">--</div>
+                        </div>
+                        <div class="card">
+                            <div class="stat-label">Completed Labs</div>
+                            <div class="stat-value text-green" id="stat-completed-labs">--</div>
+                        </div>
+                        <div class="card">
+                            <div class="stat-label">Security Findings</div>
+                            <div class="stat-value text-red" id="stat-security-findings">--</div>
+                        </div>
+                    </div>
+                    
+                    <!-- System Status Panel -->
+                    <div class="panel" style="margin-bottom:0;">
+                        <div class="panel-header">SYSTEM STATUS</div>
+                        <div class="panel-content" id="system-status-list">
+                            <!-- Populated dynamically -->
+                            <div class="text-muted">Loading status...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- MIDDLE ROW: THREAT OVERVIEW & ACTIVITY -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    
+                    <div class="panel" style="margin-bottom:0;">
+                        <div class="panel-header">THREAT OVERVIEW</div>
+                        <div class="panel-content" id="threat-overview-content">
+                            <!-- Populated dynamically -->
+                            <div class="text-muted">Loading threats...</div>
+                        </div>
+                    </div>
+
+                    <div class="panel" style="margin-bottom:0;">
+                        <div class="panel-header">RECENT ACTIVITY</div>
+                        <div class="panel-content" id="recent-activity-content">
+                            <!-- Populated dynamically -->
+                            <div class="text-muted">Loading activity...</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- BOTTOM ROW: FINDINGS -->
+                <div class="panel">
+                    <div class="panel-header">RECENT FINDINGS</div>
+                    <div class="panel-content" style="padding:0; overflow-x:auto;">
+                        <table style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>SEVERITY</th>
+                                    <th>FINDING</th>
+                                    <th>LAB</th>
+                                    <th>STATUS</th>
+                                    <th>TIME</th>
+                                </tr>
+                            </thead>
+                            <tbody id="home-findings-table">
+                                <!-- Populated dynamically -->
+                                <tr><td colspan="5" style="text-align:center;" class="text-muted">Loading findings...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- SECTION: LABS CATALOG -->
+            <div id="section-labs" class="section hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2>AI SECURITY LABS</h2>
+                        <p class="text-muted">Hands-on environments for testing AI and LLM vulnerabilities.</p>
+                    </div>
+                    <div>
+                        <input type="text" id="lab-search" placeholder="Search labs..." onkeyup="filterLabs()" style="width: 250px;">
+                    </div>
+                </div>
+                
+                <!-- Filters -->
+                <div class="flex gap-2 mb-4" style="flex-wrap: wrap;" id="lab-filters">
+                    <button class="btn-small active" onclick="setLabFilter('ALL')">ALL</button>
+                    <button class="btn-small" onclick="setLabFilter('LLM Security')">LLM SECURITY</button>
+                    <button class="btn-small" onclick="setLabFilter('Prompt Injection')">PROMPT INJECTION</button>
+                    <button class="btn-small" onclick="setLabFilter('RAG')">RAG SECURITY</button>
+                    <button class="btn-small" onclick="setLabFilter('AI Agents')">AI AGENTS</button>
+                    <button class="btn-small" onclick="setLabFilter('Assessment')">ASSESSMENT</button>
+                </div>
+                
+                <div class="dashboard-grid" id="lab-grid">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- SECTION: LAB DETAIL VIEW (Pen-Testing Console) -->
+            <div id="section-lab-detail" class="section hidden">
+                <button class="btn-small mb-3" onclick="window.location.hash='#/labs'">← BACK TO CATALOG</button>
+                <div class="lab-workspace">
+                    
+                    <!-- LEFT SIDEBAR -->
+                    <div class="lab-sidebar panel">
+                        <div class="panel-header text-cyan">LAB INFORMATION</div>
+                        <div class="panel-content">
+                            <h3 id="lab-title" class="mb-1">Lab Title</h3>
+                            <div class="flex gap-2 mb-3">
+                                <span class="badge badge-amber" id="lab-difficulty">Easy</span>
+                                <span class="badge badge-blue" id="lab-category">LLM Security</span>
+                            </div>
+                            
+                            <hr style="border:none; border-top:1px solid var(--border-color); margin: 1.5rem 0;">
+                            
+                            <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Scenario</div>
+                            <p id="lab-scenario" style="font-size:0.9rem; margin-bottom:1.5rem;"></p>
+                            
+                            <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Objectives</div>
+                            <ul id="lab-objectives-dynamic" style="list-style:none; padding:0; margin:0 0 1.5rem 0; font-size:0.9rem;">
+                                <!-- Dynamic objectives -->
+                            </ul>
+
+                            <div style="font-size:0.8rem; font-weight:600; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">Hints</div>
+                            <button class="btn-secondary btn-small mb-2" onclick="showHint()">SHOW HINT</button>
+                            <p id="lab-hint" class="hidden text-muted" style="font-size:0.9rem; font-style:italic; padding:0.5rem; background:var(--bg-dark); border-radius:4px;"></p>
+
+                            <hr style="border:none; border-top:1px solid var(--border-color); margin: 1.5rem 0;">
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted" style="font-size:0.8rem;" id="lab-status">NOT STARTED</span>
+                                <button class="btn-threat btn-small" onclick="resetLab()">RESET LAB</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MAIN CONSOLE -->
+                    <div class="lab-main">
+                        <!-- TARGET APP -->
+                        <div class="panel">
+                            <div class="panel-header">TARGET: <span id="lab-target-name" class="text-cyan">AI Assistant</span></div>
+                            <div class="panel-content">
+                                <div id="chat-box" class="chat-container"></div>
+                            </div>
+                        </div>
+
+                        <!-- ATTACK CONSOLE -->
+                        <div class="panel">
+                            <div class="panel-header">ATTACK CONSOLE</div>
+                            <div class="panel-content" style="display:flex; gap:1rem; align-items:flex-start;">
+                                <textarea id="attack-payload" rows="3" placeholder="Enter payload..." style="flex-grow:1; resize:vertical;"></textarea>
+                                <div style="display:flex; flex-direction:column; gap:0.5rem; flex-shrink:0;">
+                                    <button class="btn-primary" onclick="sendAttack()">SEND PAYLOAD</button>
+                                    <button class="btn-secondary" onclick="document.getElementById('attack-payload').value=''">CLEAR</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- INSPECTOR -->
+                        <div class="panel">
+                            <div class="panel-header">REQUEST / RESPONSE INSPECTOR</div>
+                            <div class="tabs">
+                                <button class="tab-btn active" onclick="switchTab('request')">Request</button>
+                                <button class="tab-btn" onclick="switchTab('response')">Response</button>
+                                <button class="tab-btn" onclick="switchTab('evidence')">Evidence</button>
+                            </div>
+                            <div class="tab-content">
+                                <div id="tab-request"><pre><code id="inspector-request">Waiting for request...</code></pre></div>
+                                <div id="tab-response" class="hidden"><pre><code id="inspector-response">Waiting for response...</code></pre></div>
+                                <div id="tab-evidence" class="hidden"><pre><code id="inspector-evidence">No evidence captured yet.</code></pre></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: LEARNING ACADEMY HOME -->
+            <div id="section-learning" class="section hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2>AI SECURITY ACADEMY</h2>
+                        <p class="text-muted">Structured curriculum covering AI concepts and security implications.</p>
+                    </div>
+                    <div style="background: var(--bg-card); padding: 1rem; border: 1px solid var(--border-color); border-radius: 6px; width: 300px;">
+                        <div style="font-size: 0.8rem; font-weight:600; color:var(--text-muted); margin-bottom: 0.5rem; text-transform:uppercase;">Overall Academy Progress</div>
+                        <div class="progress-bar-bg mb-2">
+                            <div class="progress-bar-fill" id="academy-progress-bar" style="width: 0%;"></div>
+                        </div>
+                        <div class="flex justify-between text-muted" style="font-size: 0.75rem;">
+                            <span id="academy-mods-stat">Modules: 0 / 15</span>
+                            <span id="academy-quiz-stat">Avg: 0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <input type="text" id="learning-search" placeholder="Search modules..." onkeyup="searchLearning()" style="width: 300px;">
+                </div>
+                
+                <div class="dashboard-grid" id="learning-grid">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- SECTION: LEARNING MODULE DETAIL -->
+            <div id="section-learning-detail" class="section hidden">
+                <button class="btn-small mb-3" onclick="window.location.hash='#/learning'">← BACK TO ACADEMY</button>
+                <div class="lab-workspace">
+                    
+                    <!-- SIDEBAR -->
+                    <div class="lab-sidebar panel">
+                        <div class="panel-header" id="module-detail-title">Module Title</div>
+                        <div class="panel-content">
+                            
+                            <div style="font-size: 0.8rem; font-weight:600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">Lessons</div>
+                            <ul id="lesson-list" style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; display: flex; flex-direction: column; gap: 0.5rem; font-size:0.9rem;">
+                                <!-- Lesson items -->
+                            </ul>
+                            
+                            <button id="btn-module-quiz" class="btn-primary mb-3" style="width: 100%;" onclick="openQuiz()">TAKE MODULE QUIZ</button>
+                            
+                            <div style="font-size: 0.8rem; font-weight:600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">Related Labs</div>
+                            <ul id="related-labs-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size:0.9rem;">
+                                <!-- Labs -->
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- MAIN CONTENT AREA -->
+                    <div class="lab-main panel" style="flex-grow:1;">
+                        <div class="panel-header flex justify-between items-center" style="background:var(--bg-dark);">
+                            <span id="lesson-detail-title" class="text-cyan">Select a lesson</span>
+                            <div class="flex gap-2">
+                                <button class="btn-small" onclick="bookmarkCurrentLesson()">🔖 BOOKMARK</button>
+                                <button class="btn-small" onclick="toggleNotesPanel()">📝 NOTES</button>
+                            </div>
+                        </div>
+                        
+                        <div id="lesson-content-area" class="panel-content" style="flex-grow: 1; overflow-y: auto;">
+                            <p class="text-muted">Please select a lesson from the sidebar to begin learning.</p>
+                        </div>
+
+                        <div id="lesson-navigation-area" class="panel-header hidden" style="justify-content: flex-end;">
+                            <button id="btn-mark-complete" class="btn-primary" onclick="markLessonComplete()">MARK COMPLETE & CONTINUE</button>
+                        </div>
+                    </div>
+                    
+                    <!-- NOTES PANEL -->
+                    <div id="notes-panel" class="hidden panel" style="width: 250px; flex-shrink: 0; display: flex; flex-direction: column; margin-bottom:0;">
+                        <div class="panel-header">MY NOTES</div>
+                        <div class="panel-content" style="display:flex; flex-direction:column; flex-grow:1; gap:1rem;">
+                            <textarea id="lesson-notes-text" style="flex-grow: 1; resize: none;" placeholder="Type your notes here..."></textarea>
+                            <button class="btn-primary btn-small" onclick="saveNotes()">SAVE NOTE</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- SECTION: EVENTS (SOC/SIEM) -->
+            <div id="section-events" class="section hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h2>SECURITY EVENTS / SIEM</h2>
+                    <button class="btn-secondary btn-small" onclick="loadEvents()">REFRESH EVENTS</button>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">EVENT LOG</div>
+                    <div class="panel-content" style="padding:0; overflow-x:auto;">
+                        <table id="events-table">
+                            <thead>
+                                <tr>
+                                    <th>TIMESTAMP</th>
+                                    <th>USER</th>
+                                    <th>ATTACK TYPE</th>
+                                    <th>SEVERITY</th>
+                                    <th>RESULT</th>
+                                    <th>LAB ENDPOINT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="events-tbody">
+                                <tr><td colspan="6" style="text-align:center;" class="text-muted">Loading events...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION: PROGRESS -->
+            <div id="section-progress" class="section hidden">
+                <h2 class="mb-4">SECURITY TRAINING PROGRESS</h2>
+                
+                <div class="dashboard-grid mb-4">
+                    <div class="card">
+                        <div class="stat-label">Lab Completion</div>
+                        <div class="progress-bar-bg mt-2 mb-2"><div class="progress-bar-fill" id="prog-lab-bar" style="width:0%;"></div></div>
+                        <div class="text-cyan font-mono" id="prog-lab-text">0 / 15</div>
+                    </div>
+                    <div class="card">
+                        <div class="stat-label">Academy Completion</div>
+                        <div class="progress-bar-bg mt-2 mb-2"><div class="progress-bar-fill" id="prog-acad-bar" style="width:0%;"></div></div>
+                        <div class="text-cyan font-mono" id="prog-acad-text">0 / 15 Modules</div>
+                    </div>
+                    <div class="card">
+                        <div class="stat-label">Vulnerabilities Exploited</div>
+                        <div class="stat-value text-red mt-2" id="prog-vuln-text">0</div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">LAB ATTEMPTS</div>
+                    <div class="panel-content" style="padding:0; overflow-x:auto;">
+                        <table style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>LAB</th>
+                                    <th>COMPLETED</th>
+                                    <th>SUCCESSFUL ATTACKS</th>
+                                    <th>LAST ATTEMPT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="progress-tbody">
+                                <tr><td colspan="4" style="text-align:center;" class="text-muted">Loading progress...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: REPORTS -->
+            <div id="section-reports" class="section hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h2>SECURITY ASSESSMENT REPORTS</h2>
+                    <button class="btn-primary" onclick="generateReport()">GENERATE NEW REPORT</button>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">REPORT ARCHIVE</div>
+                    <div class="panel-content" style="padding:0; overflow-x:auto;">
+                        <table id="reports-table">
+                            <thead>
+                                <tr>
+                                    <th>REPORT ID</th>
+                                    <th>TIMESTAMP</th>
+                                    <th>TESTER</th>
+                                    <th>FINDINGS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reports-tbody">
+                                <tr><td colspan="5" style="text-align:center;" class="text-muted">No reports generated yet.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End main-content -->
+
+        <!-- GLOBAL FOOTER -->
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        AI SECURITY LAB
+                    </div>
+                    <p>Hands-On AI Red Teaming & LLM Security Training</p>
+                    <p class="text-muted" style="font-size:0.8rem; margin-top:0.5rem;">Practice • Attack • Defend • Learn</p>
+                    
+                    <div class="footer-status">
+                        <div style="font-weight:600; margin-bottom:0.5rem; text-transform:uppercase; font-size:0.85rem; color:var(--text-main);">SYSTEM STATUS</div>
+                        <div id="footer-system-status">
+                            <div class="flex justify-between text-muted" style="font-size:0.8rem; margin-bottom:0.2rem;"><span class="text-cyan">●</span> Lab Environment <span class="text-green">ONLINE</span></div>
+                            <div class="flex justify-between text-muted" style="font-size:0.8rem; margin-bottom:0.2rem;"><span class="text-cyan">●</span> Database <span class="text-green">ONLINE</span></div>
+                            <div class="flex justify-between text-muted" style="font-size:0.8rem;"><span class="text-cyan">●</span> Security Monitoring <span class="text-green">ONLINE</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>PLATFORM</h4>
+                    <a href="#/home">Home</a>
+                    <a href="#/labs">Labs</a>
+                    <a href="#/learning">Learning</a>
+                    <a href="#/events">Events</a>
+                    <a href="#/progress">Progress</a>
+                    <a href="#/reports">Reports</a>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>LEARNING</h4>
+                    <a href="#/learning/mod01">AI Fundamentals</a>
+                    <a href="#/learning/mod10">LLM Security</a>
+                    <a href="#/learning/mod08">Prompt Injection</a>
+                    <a href="#/learning/mod07">RAG Security</a>
+                    <a href="#/learning/mod12">AI Agents</a>
+                    <a href="#/learning/mod11">AI Red Teaming</a>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>SECURITY</h4>
+                    <a href="#/learning/mod13">OWASP LLM</a>
+                    <a href="#/learning/mod14">MITRE ATLAS</a>
+                    <a href="#/labs">Security Labs</a>
+                    <a href="#/events">Security Events</a>
+                    <a href="#/reports">Assessment Reports</a>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <div>
+                    <div class="text-amber" style="font-weight:600; font-size:0.85rem; margin-bottom:0.2rem;">⚠ Educational Environment</div>
+                    <div class="text-muted" style="font-size:0.75rem;">Authorized local security training • Synthetic data only</div>
+                    <div class="text-muted" style="font-size:0.75rem; margin-top:0.5rem;">&copy; <span id="current-year"></span> AI SECURITY LAB</div>
+                </div>
+                
+                <div style="text-align:right;">
+                    <div class="text-cyan font-mono" style="font-size:0.8rem; letter-spacing:1px; margin-bottom:0.2rem;">LOCAL TRAINING ENVIRONMENT</div>
+                    <div class="text-muted" style="font-size:0.75rem;">VERSION 1.0</div>
+                    
+                    <div class="social-links" style="margin-top:0.5rem; color:var(--text-muted); font-size:0.8rem;">
+                        Developed by Chandrasekar
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" style="position:fixed; bottom:20px; right:20px; background:var(--bg-card); border:1px solid var(--primary-cyan); color:var(--text-main); padding:1rem; border-radius:4px; box-shadow:var(--glow-cyan); transition:opacity 0.3s; opacity:0; pointer-events:none; z-index:9999;">
+        Notification message
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
