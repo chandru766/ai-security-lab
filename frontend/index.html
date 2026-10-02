@@ -88,7 +88,7 @@
                 </div>
                 
                 <!-- FEATURE STRIP -->
-                <div style="display:flex; justify-content:space-between; margin-bottom:3rem; padding:1rem; border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); background:rgba(0,0,0,0.2);">
+                <div class="feature-strip">
                     <div style="display:flex; align-items:center; gap:1rem;"><span class="text-cyan" style="font-size:1.5rem;">❖</span> <div><b>15 LABS</b><br><span style="font-size:0.8rem; color:var(--text-muted);">Hands-on scenarios</span></div></div>
                     <div style="display:flex; align-items:center; gap:1rem;"><span class="text-cyan" style="font-size:1.5rem;">❖</span> <div><b>15 MODULES</b><br><span style="font-size:0.8rem; color:var(--text-muted);">Structured curriculum</span></div></div>
                     <div style="display:flex; align-items:center; gap:1rem;"><span class="text-cyan" style="font-size:1.5rem;">❖</span> <div><b>TRACK PROGRESS</b><br><span style="font-size:0.8rem; color:var(--text-muted);">Monitor skills</span></div></div>
@@ -96,10 +96,10 @@
                 </div>
 
                 <!-- TOP ROW: STATS & STATUS -->
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div class="grid-stats">
                     
                     <!-- Real Statistics -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="grid-stats-cards">
                         <div class="card">
                             <div class="stat-label">Total Labs</div>
                             <div class="stat-value text-cyan" id="stat-total-labs">--</div>
@@ -129,7 +129,7 @@
                 </div>
                 
                 <!-- MIDDLE ROW: THREAT OVERVIEW & ACTIVITY -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div class="grid-half">
                     
                     <div class="panel" style="margin-bottom:0;">
                         <div class="panel-header">THREAT OVERVIEW</div>
@@ -251,7 +251,7 @@
                         <!-- ATTACK CONSOLE -->
                         <div class="panel">
                             <div class="panel-header">ATTACK CONSOLE</div>
-                            <div class="panel-content" style="display:flex; gap:1rem; align-items:flex-start;">
+                            <div class="panel-content attack-console-flex">
                                 <textarea id="attack-payload" rows="3" placeholder="Enter payload..." style="flex-grow:1; resize:vertical;"></textarea>
                                 <div style="display:flex; flex-direction:column; gap:0.5rem; flex-shrink:0;">
                                     <button class="btn-primary" onclick="sendAttack()">SEND PAYLOAD</button>

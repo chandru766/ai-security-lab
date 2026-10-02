@@ -66,7 +66,9 @@ code, pre {
     padding: 3rem;
     border-radius: 8px;
     border: 1px solid var(--border-color);
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(0, 240, 255, 0.1);
     text-align: center;
 }
@@ -625,6 +627,39 @@ input:focus, textarea:focus {
 .gap-2 { gap: 0.5rem; }
 .gap-4 { gap: 1rem; }
 
+/* Responsive Utility Classes */
+.feature-strip {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0,0,0,0.2);
+}
+.grid-stats {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.grid-stats-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.grid-half {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.attack-console-flex {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
 /* =========================================
    FOOTER
    ========================================= */
@@ -720,7 +755,60 @@ input:focus, textarea:focus {
 }
 
 @media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 0.5rem;
+    }
+    .user-info {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .main-content { padding: 1rem; }
+    .hero {
+        flex-direction: column;
+        padding: 1.5rem;
+        text-align: center;
+    }
+    .hero h1 { font-size: 1.8rem; }
+    .hero svg { display: none; }
+    .hero button { margin-top: 1rem; margin-left: 0 !important; width: 100%; }
+    
+    .feature-strip {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    .grid-stats, .grid-stats-cards, .grid-half {
+        grid-template-columns: 1fr;
+    }
+    .attack-console-flex {
+        flex-direction: column;
+    }
+    .attack-console-flex > div {
+        width: 100%;
+        flex-direction: row !important;
+    }
+    .attack-console-flex button {
+        flex: 1;
+    }
+    
     .footer-top { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
-    .main-content { padding: 1.5rem; }
+    .site-footer { padding: 2rem 1.5rem 1.5rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .login-card { padding: 1.5rem; }
+    .tabs { flex-wrap: wrap; }
+    .tab-btn { flex: 1; text-align: center; padding: 0.8rem 0.5rem; }
+    #lab-filters button { flex: 1 0 45%; }
 }
