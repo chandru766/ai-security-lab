@@ -23,7 +23,7 @@
     --glow-green: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-body {
+body, html {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-sans);
@@ -35,6 +35,8 @@ body {
         linear-gradient(to right, rgba(35, 49, 74, 0.1) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(35, 49, 74, 0.1) 1px, transparent 1px);
     background-size: 100% 100%, 20px 20px, 20px 20px;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -766,6 +768,8 @@ input:focus, textarea:focus {
         overflow-x: auto;
         justify-content: flex-start;
         padding-bottom: 0.5rem;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
     }
     .user-info {
         width: 100%;
